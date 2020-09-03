@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WEBCAM</title>
+        <style>
+            button{
+                background-color:red;
+                font-size: 180%;
+                color: black;
+                width: 100%;
+                padding-bottom: 0%;
+                text-align: center;
+                margin-bottom: 1%;
+            }
+            video{
+                width:100%;
+            }
+        </style>
+    </head>
+    <video autoplay="true" id="video1"></video><br>
+   
+    <script>
+        var flag = 0;
+        var video = document.querySelector('#video1')
+        //var video2 = document.querySelector('#video2')
+        //var param1 = {video:{facingMode:'environment'}}
+        //var param2 = {video:{facingMode:'user'}}
+        function stopp(){
+           if(flag === 0){
+               frontcam()
+           }
+           else{
+            var stream = video.srcObject;
+            var tracks = stream.getTracks();
+            for(var i=0;i<=tracks.length;i++){
+                var track = tracks[i];
+                track.stop();
+                //video.srcObject = null;
+                if(flag === 1){
+                    backcam()
+                }
+                else if(flag === 2){
+                    frontcam()
+                }
+            }
+           }
+        }
+        function backcam(){
+            if(navigator.mediaDevices.getUserMedia){
+            navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}})
+            .then(function(stream){
+                video.srcObject = stream;
+            })
+            .catch(function(error){
+                console.log("Error1")
+            });
+            }
+            flag = 2;
+        }
+        function frontcam(){
+            if(navigator.mediaDevices.getUserMedia){
+                navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}})
+            .then(function(stream){
+                video.srcObject = stream;
+            })
+            .catch(function(error){
+                console.log("Error2")
+            });
+            }
+            flag = 1;
+            document.getElementById('switcher').innerHTML = "Switch Camera";
+        }
+    </script>
+    <button onclick="stopp()" id="switcher">Click to activate Camera</button>
+</html>
