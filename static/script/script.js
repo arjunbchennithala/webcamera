@@ -1,4 +1,4 @@
-document.write("In script.js file")
+//document.write("In script.js file")
 
 var flag = 0;
 //document.write("Flag variable initialised to ",flag)
