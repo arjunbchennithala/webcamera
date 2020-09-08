@@ -1,7 +1,7 @@
 document.write("In script.js file")
 
 var flag = 0;
-document.write("Flag variable initialised to ",flag)
+//document.write("Flag variable initialised to ",flag)
 var video = document.querySelector('video')
 function frontcam(){
 	//document.write("In frontcam function")
@@ -17,7 +17,7 @@ function frontcam(){
 	}
 	flag = 1;
 	//document.write("Frontcam function flag assigned with value 1")
-	//document.getElementById('switcher').innerHTML = "Switch Camera";
+	document.getElementById('switcher').innerHTML = "Switch Camera";
 	//document.write("Inner HTML changed")
 }
 function backcam(){
