@@ -50,7 +50,7 @@ function stopp(){
 		//document.write("In stopp function else block for loop block")
 		var track = tracks[i];
 		track.stop();
-		video.srcObject = null;
+		//video.srcObject = null;
 		if(flag === 1){
 			//document.write("In stopp function else block loop block if block")
 			backcam()
